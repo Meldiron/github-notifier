@@ -16,6 +16,7 @@ jobs:
           cp code.tar.gz /tmp/code.tar.gz
           sh /usr/local/src/start.sh &
         env:
+          ENTRYPOINT_NAME: src/index.js
           INTERNAL_RUNTIME_KEY: ${{ secrets.INTERNAL_RUNTIME_KEY }}
       - name: Execute OPR
         run: |
