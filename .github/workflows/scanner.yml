@@ -1,0 +1,18 @@
+name: Update Mall XML
+on:
+  schedule:
+    - cron: "*/5 * * * *" # Every 5 minutes
+  workflow_dispatch:
+jobs:
+  main:
+    runs-on: ubuntu-latest
+    container:
+      image: openruntimes/node:17.0
+    steps:
+      - name: Main
+        run: "curl -H \"X-Internal-Challenge: secret-key\" -H \"Content-Type: application/json\" -X POST http://localhost:3000/ -d '{\"payload": \"{}\"}'"
+        env:
+          GITHUB_WEBHOOK: ${{ secrets.DB_DATABASE }}
+          GITHUB_USERNAME: ${{ secrets.GITHUB_USERNAME }}
+          GITHUB_ACCESS_TOKEN: ${{ secrets.GITHUB_ACCESS_TOKEN }}
+          DISCORD_PING_USER: ${{ secrets.DISCORD_PING_USER }}
