@@ -14,8 +14,9 @@ jobs:
           apk add curl
           sh /usr/local/src/start.sh &
           sleep 10
-          curl -H "X-Internal-Challenge: secret-key" -H "Content-Type: application/json" -X POST http://localhost:3000/ -d '{"payload": "{}"}'
+          curl -H "X-Internal-Challenge: ${INTERNAL_RUNTIME_KEY}" -H "Content-Type: application/json" -X POST http://localhost:3000/ -d '{"payload": "{}"}'
         env:
+          INTERNAL_RUNTIME_KEY: ${{ secrets.INTERNAL_RUNTIME_KEY }}
           GITHUB_WEBHOOK: ${{ secrets.DB_DATABASE }}
           GITHUB_USERNAME: ${{ secrets.GITHUB_USERNAME }}
           GITHUB_ACCESS_TOKEN: ${{ secrets.GITHUB_ACCESS_TOKEN }}
