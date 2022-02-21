@@ -11,6 +11,7 @@ jobs:
     steps:
       - name: Main
         run: |
+          apk add curl
           curl -H "X-Internal-Challenge: secret-key" -H "Content-Type: application/json" -X POST http://localhost:3000/ -d '{"payload": "{}"}'
         env:
           GITHUB_WEBHOOK: ${{ secrets.DB_DATABASE }}
