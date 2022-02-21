@@ -11,7 +11,7 @@ jobs:
     steps:
       - name: Main
         run: |
-          apk add curlgit
+          apk add curl
           sleep 5
           curl -H "X-Internal-Challenge: secret-key" -H "Content-Type: application/json" -X POST http://localhost:3000/ -d '{"payload": "{}"}'
         env:
