@@ -10,7 +10,8 @@ jobs:
       image: openruntimes/node:17.0
     steps:
       - name: Main
-        run: 'curl -H "X-Internal-Challenge: secret-key" -H "Content-Type: application/json" -X POST http://localhost:3000/ -d \'{"payload": "{}"}\''
+        run: |
+          curl -H "X-Internal-Challenge: secret-key" -H "Content-Type: application/json" -X POST http://localhost:3000/ -d '{"payload": "{}"}'
         env:
           GITHUB_WEBHOOK: ${{ secrets.DB_DATABASE }}
           GITHUB_USERNAME: ${{ secrets.GITHUB_USERNAME }}
