@@ -9,6 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     container: openruntimes/node:17.0
     steps:
+      - uses: actions/checkout@v2
       - name: Start OPR
         run: |
           ls
