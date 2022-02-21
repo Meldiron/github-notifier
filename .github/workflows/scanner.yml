@@ -5,12 +5,19 @@ on:
   workflow_dispatch:
 jobs:
   main:
+    name: Main
     runs-on: ubuntu-latest
-    container:
-      image: openruntimes/node:17.0
+    container: openruntimes/node:17.0
     steps:
       - name: Main
         run: |
+          ls
+          cd /usr
+          ls
+          cd local
+          ls
+          cd src
+          ls
           apk add curl
           sh usr/local/src/start.sh &
           sleep 10
