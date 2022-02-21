@@ -12,12 +12,13 @@ jobs:
       - name: Main
         run: |
           apk add curl
+          cp code.tar.gz /tmp/code.tar.gz
           sh /usr/local/src/start.sh &
-          sleep 10
+          sleep 5
           curl -H "X-Internal-Challenge: ${INTERNAL_RUNTIME_KEY}" -H "Content-Type: application/json" -X POST http://localhost:3000/ -d '{"payload": "{}"}'
         env:
           INTERNAL_RUNTIME_KEY: ${{ secrets.INTERNAL_RUNTIME_KEY }}
-          GITHUB_WEBHOOK: ${{ secrets.DB_DATABASE }}
           GITHUB_USERNAME: ${{ secrets.GITHUB_USERNAME }}
           GITHUB_ACCESS_TOKEN: ${{ secrets.GITHUB_ACCESS_TOKEN }}
           DISCORD_PING_USER: ${{ secrets.DISCORD_PING_USER }}
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
