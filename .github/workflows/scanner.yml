@@ -11,15 +11,8 @@ jobs:
     steps:
       - name: Main
         run: |
-          ls
-          cd /usr
-          ls
-          cd local
-          ls
-          cd src
-          ls
           apk add curl
-          sh usr/local/src/start.sh &
+          sh /usr/local/src/start.sh &
           sleep 10
           curl -H "X-Internal-Challenge: secret-key" -H "Content-Type: application/json" -X POST http://localhost:3000/ -d '{"payload": "{}"}'
         env:
